@@ -14,8 +14,6 @@ main() {
 
 	con.reset_controller();
 
-	con.toggle_relay(2);
-
 	initscr();
 	t = newwin( 3, 33, 1, 1 );
 	box( t, 0, 0 );
