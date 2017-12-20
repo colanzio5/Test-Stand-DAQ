@@ -1,9 +1,8 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 class Controller{
-	private:
-		bool states[6];
 	public:
+		bool states[6];
 		int relay_on(int r);
 		int relay_off(int r);
 		int toggle_relay(int r);

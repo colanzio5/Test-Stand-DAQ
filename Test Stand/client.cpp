@@ -9,9 +9,12 @@ main() {
 	char item2[7];
 	char item3[40];
 	int ch, i = 0, width = 7;
+	
 	Controller con;
 
 	con.reset_controller();
+
+	con.relay_on(3);
 
 	initscr();
 	t = newwin( 3, 33, 1, 1 );
@@ -35,7 +38,12 @@ main() {
 	box( s, 0, 0 );
 
 	for( i=0; i<6; i++ ) {
-		sprintf(item2, "%-7s", con.get_status(i));
+		char *state;
+		if(con.get_status(i))
+			state = "Open";
+		else
+			state = "Closed";
+		sprintf(item2, "%-7s", state);
 		mvwprintw( s, i+1, 2, "%s", item2 );
 	}
 
@@ -50,26 +58,35 @@ main() {
 	
 	while(( ch = wgetch(w)) != 'q'){ 
 		
-			sprintf(item, "%-7s",  list[i]); 
-			mvwprintw( w, i+1, 2, "%s", item ); 
-			switch( ch ) {
-				case KEY_UP:
-							i--;
-							i = ( i<0 ) ? 4 : i;
-							break;
-				case KEY_DOWN:
-							i++;
-							i = ( i>5 ) ? 0 : i;
-							break;
-				case KEY_ENTER:
-							printf("enter");
-							break;
-			}
-			wattron( w, A_STANDOUT );
-			
-			sprintf(item, "%-7s",  list[i]);
-			mvwprintw( w, i+1, 2, "%s", item);
-			wattroff( w, A_STANDOUT );
+		sprintf(item, "%-7s",  list[i]); 
+		mvwprintw( w, i+1, 2, "%s", item ); 
+		switch( ch ) {
+			case KEY_UP:
+				i--;
+				i = ( i<0 ) ? 5 : i;
+				break;
+			case KEY_DOWN:
+				i++;
+				i = ( i>5 ) ? 0 : i;
+				break;
+			case KEY_RIGHT:
+				con.toggle_relay(i);
+				wrefresh(s);
+				char *state;
+				if(con.get_status(i))
+					state = "Open";
+				else
+					state = "Closed";
+				sprintf(item2, "%-7s", state);
+				mvwprintw( s, i+1, 2, "%s", item2);
+				break;
+		}
+		wattron( w, A_STANDOUT );
+				
+		
+		sprintf(item, "%-7s",  list[i]);
+		mvwprintw( w, i+1, 2, "%s", item);
+		wattroff( w, A_STANDOUT );
 	}
 
 	delwin( w );
