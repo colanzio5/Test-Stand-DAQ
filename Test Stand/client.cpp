@@ -14,7 +14,7 @@ main() {
 
 	con.reset_controller();
 
-	con.relay_on(3);
+	con.toggle_relay(2);
 
 	initscr();
 	t = newwin( 3, 33, 1, 1 );
@@ -71,7 +71,6 @@ main() {
 				break;
 			case KEY_RIGHT:
 				con.toggle_relay(i);
-				wrefresh(s);
 				char *state;
 				if(con.get_status(i))
 					state = "Open";
@@ -79,6 +78,7 @@ main() {
 					state = "Closed";
 				sprintf(item2, "%-7s", state);
 				mvwprintw( s, i+1, 2, "%s", item2);
+				wrefresh(s);
 				break;
 		}
 		wattron( w, A_STANDOUT );
