@@ -26,7 +26,6 @@ def relay3_toggle():
 	print "Relay 3 Toggled"
 	return
 
-<<<<<<< HEAD
 def relay3_toggle():
 	RELAY.relayTOGGLE(0,4)
 	print "Relay 4 Toggled"
@@ -41,9 +40,7 @@ def relay3_toggle():
 	RELAY.relayTOGGLE(0,6)
 	print "Relay 6 Toggled"
 	return
-=======
 
->>>>>>> bb0c4ee7dbc2ed576118fafd154ad057b7938555
 while True:
 	 
 	conn,addr = s.accept()
@@ -66,7 +63,6 @@ while True:
 			print "Received data: ",data
 			relay3_toggle()
 
-<<<<<<< HEAD
 		elif 'relay_4' in data:
 			print "Received data: ",data
 			relay4_toggle()
@@ -80,6 +76,4 @@ while True:
 			relay6_toggle()
 
 conn.close()
-=======
 conn.close()
->>>>>>> bb0c4ee7dbc2ed576118fafd154ad057b7938555

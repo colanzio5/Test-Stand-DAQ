@@ -1,29 +1,22 @@
 import sys
-<<<<<<< HEAD
-=======
 import os
->>>>>>> bb0c4ee7dbc2ed576118fafd154ad057b7938555
 import time
 import logging
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-<<<<<<< HEAD
 import socket 
-=======
 import matplotlib.pyplot as plt
 from Phidget22.Devices.VoltageRatioInput import *
 from Phidget22.PhidgetException import *
 from Phidget22.Phidget import *
 from Phidget22.Net import *
 import socket
->>>>>>> bb0c4ee7dbc2ed576118fafd154ad057b7938555
 import subprocess
 
 class Client(QMainWindow):
 	def __init__(self):
 		super().__init__()
-<<<<<<< HEAD
 		self.left = 260
 		self.top = 40
 		self.width = 1500
@@ -35,7 +28,6 @@ class Client(QMainWindow):
 		self.Buttons()
 		self.show()
 
-=======
 		self.setWindowState(Qt.WindowMaximized)
 		self.yGeom = QDesktopWidget().height()
 		self.xGeom = QDesktopWidget().width()
@@ -51,7 +43,6 @@ class Client(QMainWindow):
 		self.show()
 
 
->>>>>>> bb0c4ee7dbc2ed576118fafd154ad057b7938555
 	def initUI(self):
 		self.title = 'Test Stand'
 		self.setWindowTitle(self.title)
@@ -59,7 +50,6 @@ class Client(QMainWindow):
 		# Set window background color
 		self.setAutoFillBackground(True)
 		p = self.palette()
-<<<<<<< HEAD
 		p.setColor(self.backgroundRole(), Qt.gray)
 		self.setPalette(p)
 
@@ -73,7 +63,6 @@ class Client(QMainWindow):
 			slabel.resize(sresizex, sresizey)
 			slabel.setFont(QtGui.QFont('Times', sfontsize, QtGui.QFont.Bold, storf))
 			slabel.setPalette(scolor)
-=======
 		p.setColor(self.backgroundRole(), Qt.white)
 		self.setPalette(p)
 
@@ -140,12 +129,10 @@ class Client(QMainWindow):
 		self.loadcelllabel = createLabel(self, '0',self.testStandCenter+150,self.testStandDepth+800,300,50,20,True,self.paletteblack)
 
 	def Pictures(self):
->>>>>>> bb0c4ee7dbc2ed576118fafd154ad057b7938555
 
 		def createPicture(self, spicture, smovex, smovey, sresizex, sresizey):
 			# makes code smaller, all the pictures in the program
 			# you have to save pictures to the pictures/ path in order to show
-<<<<<<< HEAD
 
 			pix = QtWidgets.QLabel(self)
 			pix.setPixmap(QtGui.QPixmap('pictures/' + spicture))
@@ -163,7 +150,6 @@ class Client(QMainWindow):
 
 		def toggleState(relayNum):
 			states[relayNum-1] = not states[relayNum-1]
-=======
 			pix = QLabel(self)
 			pix.setPixmap(QPixmap('pictures/' + spicture))
 			pix.resize(sresizex, sresizey)
@@ -201,7 +187,6 @@ class Client(QMainWindow):
 				sbutton.setIconSize(QSize(siconx, sicony))
 			return sbutton
 
->>>>>>> bb0c4ee7dbc2ed576118fafd154ad057b7938555
 
 		#sets 4 different font sizes for the buttons created. Pick one.
 		self.font2 = QFont()
@@ -213,7 +198,6 @@ class Client(QMainWindow):
 		self.font5 = QFont()
 		self.font5.setPointSize(24)
 
-<<<<<<< HEAD
 		server_IP = '192.168.1.132' #This is the IP of the ESB Pi. It is a static IP. 
 		port = 5000
 		BUFF = 1024
@@ -300,7 +284,6 @@ class Client(QMainWindow):
 			self.launchBtn.clicked.connect(self.launch_app)
 
 
-=======
 		self.connectbtn = createButton(self,'Connect',self.testStandCenter-120,self.testStandDepth+23,150,40,True,self.font5,self.connect_app,'icon.png',100,100)
 		self.firebtn = createButton(self,'Fire!',5,130,285,90,True,self.font5,self.connect_app,'icon.png',100,100)
 		self.loadcellbtn = createButton(self,'Start Load Cell',10,300,270,70,True,self.font5,self.loadcell_app,'icon.png',100,100)
@@ -405,7 +388,6 @@ class Client(QMainWindow):
 		qp.drawLine(self.testStandCenter-210, self.testStandDepth+10, self.testStandCenter-420, self.testStandDepth+10)
 		#qp.drawLine(self.testStandCenter+178, self.testStandDepth+29, 950, 100)
 		#qp.drawLine(307.5, 260, 307.5, 730)
->>>>>>> bb0c4ee7dbc2ed576118fafd154ad057b7938555
 
 
 	def MenuBar(self):
@@ -442,8 +424,6 @@ class Client(QMainWindow):
 		aboutMenu.addAction(helpAction)
 		aboutMenu.addAction(aboutAction)
 
-<<<<<<< HEAD
-=======
 	def connect_app(self):
 
 		self.logTextBox.append("  >  Connecting...{}".format(time.strftime("\t     -\t(%H:%M:%S)", time.localtime())))
@@ -468,12 +448,10 @@ class Client(QMainWindow):
 				self.connect_app()
 
 
->>>>>>> bb0c4ee7dbc2ed576118fafd154ad057b7938555
 	def close_app(self):
 		# exits GUI
 		#self.logTextBox.append(">  Exiting...{}".format(time.strftime("\t-           (%H:%M:%S)", time.localtime())))
 		choice = QMessageBox.question(self, "Confirmation.", "Are you sure you want to exit?",
-<<<<<<< HEAD
 		                                        QMessageBox.Yes | QMessageBox.No)
 		if choice == QMessageBox.Yes:
 		    print("System Closed")
@@ -482,7 +460,6 @@ class Client(QMainWindow):
 		else:
 		    pass
 		    #self.logTextBox.append("> Exit Stopped{}".format(time.strftime("\t-         (%H:%M:%S)", time.localtime())))
-=======
 												QMessageBox.Yes | QMessageBox.No)
 		if choice == QMessageBox.Yes:
 			print("System Closed")
@@ -533,7 +510,6 @@ class Client(QMainWindow):
 			self.tank_2_Init_Move -= 12/2
 			self.purple.move(self.testStandCenter+153, self.testStandDepth+668-self.tank_2_Init_Move)
 			self.purple.resize(47, self.tank_2_Init)
->>>>>>> bb0c4ee7dbc2ed576118fafd154ad057b7938555
 
 
 class ClientSettings(QWidget):
@@ -579,8 +555,6 @@ if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	ex = Client()
 	sys.exit(app.exec_())
-<<<<<<< HEAD
-=======
 
 
 
@@ -620,4 +594,3 @@ if __name__ == '__main__':
 	def toggler_6(self):
 		#s.send(b'relay_3')
 		self.animations("tank_2_down")'''
->>>>>>> bb0c4ee7dbc2ed576118fafd154ad057b7938555
