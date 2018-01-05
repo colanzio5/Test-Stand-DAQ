@@ -25,11 +25,11 @@ Software Repository for SDSU Rocket Project Avionics. DAQ software package is re
 
 ## MQTT Broker
 * Mosquitto MQTT Broker <https://github.com/eclipse/mosquitto>
-* ### Broker Topics
-    Topic Name | Topic Description
-    ---------- | -----------
-    1 | foo
-    2 | bar
+### Broker Topics
+Topic Name | Topic Description
+---------- | -----------
+1 | foo
+2 | bar
 
 ## Data Visualization Client
 
