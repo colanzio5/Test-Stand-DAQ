@@ -9,4 +9,5 @@ SDSU Rocket Project DAQ Client
     * Sensor Array
     * MQTT Broker
     * Data Visualization Client
-(see below for descriptions...)
+
+    (see below for descriptions...)
