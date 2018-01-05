@@ -28,8 +28,11 @@ Software Repository for SDSU Rocket Project Avionics. DAQ software package is re
 ### Broker Topics
 Topic Name | Topic Description
 ---------- | -----------
-1 | foo
-2 | bar
+1 | Valve States
+2 | Valve Command
+3 | Transducer Data/Thermocouple Data
+4 | Load Cell/GPS/IMU/TVC Position Feedback
+5 | Ignite/Abort
 
 ## Data Visualization Client
 
