@@ -23,20 +23,12 @@ def echo_data():
     #create fake valve states (randomly open small percentage of time)
     #normally server would read data from the valve feedback sensor  
     # layout -> [v0, v1, v2...v7]
-    relays = 8 * [1]
-    for relay in relays:
-        relay = random.random() >= 0.80
-    print(relays)
+    relays = [(random.random() >= 0.90) for sensor in range(8)]
 
     #create fake pressure transducer and thermocouple data
     #normally server would read data from the ADC board
     # layout -> [p0, p1, p2, p3, t0, t1, t2, t3...t9]
-    sensors = 14 * [1]
-    increment = 0
-    for sensor in sensors:
-        sensor = math.sin(increment + seed_data)
-        increment += 0.25
-    print(sensors)
+    sensors = [random.uniform(0,100) for sensor in range(14)]
 
     # PUBLISH ANY OUTGOING DATA HERE
     #publish generated values to mqtt broker - data will become available for clients
@@ -61,17 +53,17 @@ def parse_message(message):
     print(message)
 
 def main_loop():
-    client.loop_forever()
+    print("main loop started...")
 
     while True:
-        print("Echo Data: " + echo_data())
+        print("Echo Data: " + str(echo_data()))
         time.sleep(0.5)
 
 # OBJECTS #
 # Topic Name | Topic Description
 # 1 | Valve States  (publish)
 # 2 | Valve Command (subscribe)
-# 3 | Transducer Data/Thermocouple Data (publish)
+# 3 | Transducer Data/Thermocouple Data (publish)2
 # 4 | Load Cell/GPS/IMU/TVC Position Feedback (publish)
 # 5 | Safe/Alert/Panic/Launch (publish/subscribe)
 #       ...(0 - Safe, 1 - Alert, 2 - Panic, 3 - Abort, 4 - Launch)
@@ -80,7 +72,7 @@ def main_loop():
 SAFE_ALERT_PANIC_ABORT_LAUNCH = 0 
 
 # IP address of mqtt broker - localhost/127.0.0.1 if on local machine
-host = "192.168.1.132"	
+host = "localhost"	
 
 #mqtt broker topic string definitions
 valve_states_topic = "1"
@@ -91,6 +83,7 @@ safe_abort_topic = "5"
 
 #init mqtt client connection and begin echo/listen loop
 client = mqtt_init()
+print("about to begin main loop...")
 main_loop()
 
 # end of program
