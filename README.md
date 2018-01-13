@@ -1,6 +1,15 @@
 SDSU Rocket Project DAQ Client
 =================================
-Software Repository for SDSU Rocket Project Avionics. DAQ software package is responsible for data acquisition and command/control of the vehicle. 
+Software Repository for SDSU Rocket Project Avionics. DAQ software package is responsible for data acquisition and command/control of the vehicle
+
+**NOTE** Old client is located in Depreciated Folder. Current or new client and server software should be organized according to current folder structure
+## Dependencies and Install
+* mosquitto broker install - git clone 
+<https://github.com/eclipse/mosquitto.git>
+* python 3.*.* (NOT 2.7.*) - https://www.python.org/downloads/
+* python mqtt client - pip install paho.mqtt
+* PyQt5 - pip install PyQt5
+* Phiget22 - <https://www.phidgets.com/docs/Language_-_Python#Getting_Started_with_Python>
 ## Software Structure
 ### Test Stand Configuration
 * Sensor Array/MQTT Broker
@@ -20,7 +29,6 @@ Software Repository for SDSU Rocket Project Avionics. DAQ software package is re
 * Load Cell Data
 * Thermocouple Data
 * TVC Position Feedback
-
 ## MQTT Broker
 * Mosquitto MQTT Broker <https://github.com/eclipse/mosquitto>
 * Pipline for DataACQ -> Broker -> Data Visualization Client
