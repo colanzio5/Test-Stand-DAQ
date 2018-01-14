@@ -1,7 +1,7 @@
 import piplates.RELAYplate as RELAY
 import paho.mqtt.client as mqtt
 
-HOST = "192.168.1.132"
+HOST = "192.168.1.132"	
 TOPIC_1 = "Valve_Commands"
 TOPIC_2 = "Valve_Readings"
 
@@ -121,6 +121,10 @@ def relay6_off():
 	client.publish(TOPIC_2,b"Relay_6_OFF.")
 	return
 
+def	send_pressures(data):
+	client.publish(TOPIC_3,str(data))
+	return
+
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -135,8 +139,11 @@ def relay6_off():
 
 
 def calldata(data):
+	print(data)
+	if 'ducers' in data:
+		send_pressures(str(data))
 
-	if 'relay1_open' in data:
+	elif 'relay1_open' in data:
 		print ("Received data: ",data)
 		relay1_on()
 
